@@ -236,6 +236,10 @@ class MacroAutoCompletionProvider extends DefaultCompletionProvider implements
 			headline = headline.substring(0, headline.length() - 2);
 		}
 
+		if (headline.endsWith("\n")) {
+			headline = headline.substring(0, headline.length() - 1);
+		}
+		
 		return new BasicCompletion(provider, headline, null, description);
 	}
 
