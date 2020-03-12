@@ -172,13 +172,15 @@ public class MacroLanguageSupportPlugin extends AbstractLanguageSupport
 					
 					Token tkn = textArea.getTokenListForLine(lineNumber);
 					Token lasttkn = tkn.getLastNonCommentNonWhitespaceToken();
+					int textStart = lineOffset;
+					if (tkn.isWhitespace()) textStart = tkn.getNextToken().getOffset();
 
 					if (tkn.getType() != Token.NULL && lasttkn != null) { // not an empty/comment only line
 													
 						if (innerCaretPosition <= lasttkn.getEndOffset() && // not behind trailing comments
 						    !(lasttkn.isLeftCurly() || lasttkn.isRightCurly()) && // no curly braces at the end
 						    !partialLineToCaret.trim().endsWith(";") && // there's no semicolon already in place
-						    caretPosition > textArea.getLineStartOffset(lineNumber) && // not at the very line start
+						    caretPosition > textStart && // not at the very line start
 						    !partialLineToCaret.startsWith("#@") && // excluding script parameter declarations
 						    partialLineToCaret.replaceFirst("\\s*(for|if|while)\\s*\\(.+?\\)(\\s+|$)", "").length()!=0  // exclude split-line for/if/while statements 
 							) {
