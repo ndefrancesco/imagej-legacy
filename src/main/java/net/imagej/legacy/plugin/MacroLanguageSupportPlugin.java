@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.SwingUtilities;
+import javax.swing.text.BadLocationException;
 import javax.swing.text.JTextComponent;
 
 import org.fife.rsta.ac.AbstractLanguageSupport;
@@ -45,6 +46,7 @@ import org.fife.ui.autocomplete.Completion;
 import org.fife.ui.autocomplete.CompletionProvider;
 import org.fife.ui.autocomplete.LanguageAwareCompletionProvider;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
+import org.fife.ui.rsyntaxtextarea.Token;
 import org.scijava.module.ModuleService;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
@@ -160,7 +162,33 @@ public class MacroLanguageSupportPlugin extends AbstractLanguageSupport
 
 		@Override
 		public void keyPressed(final KeyEvent e) {
+			if (e.getKeyCode() == KeyEvent.VK_ENTER && !ac.isPopupVisible()) { // Enter has been pressed, but autocompletion is not active
+				try {
+					int caretPosition = textArea.getCaretPosition();
+					int lineNumber = textArea.getLineOfOffset(caretPosition);
+					int lineOffset = textArea.getLineStartOffset(lineNumber);
+					String partialLineToCaret = textArea.getText(lineOffset, caretPosition - lineOffset);
+					int innerCaretPosition = lineOffset + partialLineToCaret.replaceAll("\\s+$","").length(); // using right trim hack
+					
+					Token tkn = textArea.getTokenListForLine(lineNumber);
+					Token lasttkn = tkn.getLastNonCommentNonWhitespaceToken();
 
+					if (tkn.getType() != Token.NULL && lasttkn != null) { // not an empty/comment only line
+													
+						if (innerCaretPosition <= lasttkn.getEndOffset() && // not behind trailing comments
+						    !(lasttkn.isLeftCurly() || lasttkn.isRightCurly()) && // no curly braces at the end
+						    !partialLineToCaret.trim().endsWith(";") && // there's no semicolon already in place
+						    caretPosition > textArea.getLineStartOffset(lineNumber) && // not at the very line start
+						    !partialLineToCaret.startsWith("#@") && // excluding script parameter declarations
+						    partialLineToCaret.replaceFirst("\\s*(for|if|while)\\s*\\(.+?\\)(\\s+|$)", "").length()!=0  // exclude split-line for/if/while statements 
+							) {
+							textArea.insert(";", innerCaretPosition);
+						}
+					}
+				} catch (BadLocationException e2) {
+					e2.printStackTrace();
+				}		
+			}
 		}
 
 		@Override
