@@ -62,7 +62,7 @@ Returns a copy of <i>array</i>.
 <b>Array.deleteValue(array, value)</b> - 
 Returns a version of <i>array</i> where all numeric or string elements
 in the array that contain <i>value</i> have been deleted
-(<a href="https://imagej.net/ij/macros/examples/ArrayDeleteDemo.txt">examples</a>).
+(<a href="https://imagej.net/macros/examples/ArrayDeleteDemo.txt">examples</a>).
 Requires 1.52o.
 <br>
 
@@ -164,7 +164,7 @@ String sorts are case-insensitive.
 <b>Array.sort(array1, array2, array3...)</b> - 
 Sorts multiple arrays, where all the arrays adopt the sort
 order of <i>array1</i>
-(<a href="https://imagej.nih.gov/ij/macros/examples/ArraySortDemo.txt">example</a>).
+(<a href="https://imagej.net/macros/examples/ArraySortDemo.txt">example</a>).
 Requires 1.52u.
 <br>
 
@@ -236,8 +236,8 @@ image does not have a calibration function.
 <b>call("class.method", arg1, arg2, ...)</b><br>
 Calls a public static method in a Java class, passing an arbitrary number
 of string arguments, and returning a string. Refer to the
-<a href="https://imagej.net/ij/macros/CallJavaDemo.txt">CallJavaDemo</a> macro
-and the <a href="https://imagej.net/ij/plugins/imp-props.html">ImpProps</a>
+<a href="https://imagej.net/macros/CallJavaDemo.txt">CallJavaDemo</a> macro
+and the <a href="https://imagej.net/plugins/imp-props.html">ImpProps</a>
 plugin for examples.
 </p><p>
 
@@ -313,7 +313,7 @@ Note that d2s stands for "double to string".
 <a name="debug"></a>
 <b>debug(arg)</b><br>
 Calls the
-<a href="https://imagej.net/ij/developer/macro/macros.html#debugger">macro debugger</a>,
+<a href="https://imagej.net/developer/macro/macros.html#debugger">macro debugger</a>,
 where 'arg' is "break" (the default), "run", "trace", "fast-trace", "dump" or "throw".
 Call debug("dump") to display the contents of the symbol table, the tokenized macro
 code and the variable stack. Call debug("throw") to display an example
@@ -347,7 +347,7 @@ lines by inserting new line characters ("\n") into the string.
 <b>Dialog.addMessage(string, fontSize, fontColor)</b> -
 Adds a message to the dialog using a specified font size
 and color
-(<a href="https://imagej.net/ij/macros/examples/DialogMessageDemo.txt">example</a>).
+(<a href="https://imagej.net/macros/examples/DialogMessageDemo.txt">example</a>).
 The message can be broken into
 multiple lines by inserting new line characters ("\n") into the string.
 The 'fontSize' and 'fontColor' arguments are optional.
@@ -527,7 +527,7 @@ See also:
 <b>drawString("text", x, y)</b><br>
 Draws text at the specified location.
 The first character is drawn obove and to the right of (x,y). 
-Call <a href="https://imagej.net/ij/developer/macro/functions.html#setFont">setFont()</a>
+Call <a href="https://imagej.net/developer/macro/functions.html#setFont">setFont()</a>
 to specify the font.
 Call <a href="https://imagej.net/developer/macro/functions.html#setJustification">setJustification()</a>
 to have the text centered or right justified.
@@ -947,8 +947,8 @@ This function is used to implement the
 Returns the largest value that is not greater than
 <i>n</i> and is equal to an integer.
 See also: 
-<a href="https://imagej.nih.gov/ij/developer/macro/functions.html#Math.ceil">Math.ceil</a> and
-<a href="https://imagej.nih.gov/ij/developer/macro/functions.html#round">round</a>. 
+<a href="https://imagej.net/developer/macro/functions.html#Math.ceil">Math.ceil</a> and
+<a href="https://imagej.net/developer/macro/functions.html#round">round</a>. 
 </p><p>
 
 <a name="fromCharCode"></a>
@@ -1028,7 +1028,7 @@ aborts the macro if the user cancels the "choose directory" dialog box.
 For examples, see the
 <a href="https://imagej.net/macros/GetDirectoryDemo.txt">GetDirectoryDemo</a> and
 <a href="https://imagej.net/macros/ListFilesRecursively.txt">ListFilesRecursively</a> macros.
-See also: <a href="https://imagej.net/ij/developer/macro/functions.html#getFileList">getFileList</a> and the <a href="https://imagej.nih.gov/ij/developer/macro/functions.html#file">File functions</a>.
+See also: <a href="https://imagej.net/developer/macro/functions.html#getFileList">getFileList</a> and the <a href="https://imagej.net/developer/macro/functions.html#file">File functions</a>.
 
 <b>getDirectory("Choose a Directory")</b> - 
 Displays a file open dialog, using the argument as a title, and
@@ -1167,7 +1167,7 @@ from, or an empty string if the file name is not available.
 
 <b>getInfo("image.title")</b><br>
 Returns the title of the current image. Same as
-<a href="https://imagej.net/ij/developer/macro/functions.html#getTitle">getTitle</a>.
+<a href="https://imagej.net/developer/macro/functions.html#getTitle">getTitle</a>.
 </p><p>
 
 <b>getInfo("image.subtitle")</b><br>
@@ -1208,13 +1208,13 @@ Returns information about the current image's overlay.
 <b>getInfo("selection.name")</b><br>
 Returns the name of the current selection, or "" if there is no selection
 or the selection does not have a name. The argument can also be
-"roi.name". See also: <a href="https://imagej.net/ij/developer/macro/functions.html#Roi.getName">Roi.getName</a>.
+"roi.name". See also: <a href="https://imagej.net/developer/macro/functions.html#Roi.getName">Roi.getName</a>.
 </p><p>
 
 <a name="getInfo14"></a>
 <b>getInfo("selection.color")</b><br>
 Returns the color of the current selection.
-See also: <a href="https://imagej.net/ij/developer/macro/functions.html#Roi.getStrokeColor">Roi.getStrokeColor</a>.
+See also: <a href="https://imagej.net/developer/macro/functions.html#Roi.getStrokeColor">Roi.getStrokeColor</a>.
 </p><p>
 
 <a name="getInfo-label"></a>
@@ -1250,7 +1250,7 @@ Replaces the getInfo() function.
 <a name="getInfo18"></a>
 <b>getInfo("window.title")</b><br>
 Returns the title of the front-most window.
-Use <a href="https://imagej.net/ij/developer/macro/functions.html#getTitle">getTitle</a> to
+Use <a href="https://imagej.net/developer/macro/functions.html#getTitle">getTitle</a> to
 get the title of the current batch mode image.
 </p><p>
 
@@ -1368,7 +1368,7 @@ See also: <a href="https://imagej.net/developer/macro/functions.html#dialog">Dia
 <b>getPixel(x, y)</b><br>
 Returns the raw value of the pixel at <i>(x,y)</i>. Uses bilinear
 interpolation if 'x' or 'y' are not integers. Use
-<a href="https://imagej.net/ij/developer/macro/functions.html#getValue">getValue(x,y)</a> to get
+<a href="https://imagej.net/developer/macro/functions.html#getValue">getValue(x,y)</a> to get
 calibrated pixel values from 8 and 16 bit images
 and intensity values from RGB images.
 Note that pixels in RGB images contain red, green and 
@@ -1529,7 +1529,7 @@ Returns the title of the current image.
 Returns the calibrated pixel values from 8 and 16 bit
 images and intensity values from RGB images.
 Uses bilinear interpolation if 'x' or 'y' are not integers.
-Use <a href="https://imagej.net/ij/developer/macro/functions.html#getPixel">getPixel(x,y)</a>
+Use <a href="https://imagej.net/developer/macro/functions.html#getPixel">getPixel(x,y)</a>
 to read raw pixel values.
 Requires 1.52p.
 </p><p>
@@ -1575,13 +1575,13 @@ Returns the height, in pixels, of the current font.
 <b>getValue("selection.size")</b><br>
 Returns the number of points in the current selection, 
 or 0 if there is no selection.
-See also: <a href="https://imagej.net/ij/developer/macro/functions.html#Roi.size">Roi.size</a>.
+See also: <a href="https://imagej.net/developer/macro/functions.html#Roi.size">Roi.size</a>.
 </p><p>
 
 <a name="selection-width"></a>
 <b>getValue("selection.width")</b><br>
 Returns the stroke width of the current selection.
-See also: <a href="https://imagej.net/ij/developer/macro/functions.html#Roi.getStrokeWidth">Roi.getStrokeWidth</a>.
+See also: <a href="https://imagej.net/developer/macro/functions.html#Roi.getStrokeWidth">Roi.getStrokeWidth</a>.
 </p><p>
 
 <a name="results-count"></a>
@@ -1688,7 +1688,7 @@ Returns, as a string, the amount of memory in bytes available to ImageJ. This va
 <a name="IJ.pad"></a>
 <b>IJ.pad(n, length)</b> - 
 Pads 'n' with leading zeros and returns the result
-(<a href="https://imagej.net/ij/macros/examples/StackOverlay.txt">example</a>).
+(<a href="https://imagej.net/macros/examples/StackOverlay.txt">example</a>).
 Note that 'n' can be either a number or a string.
 <br>
 
@@ -1934,9 +1934,9 @@ Use <i>List.setMeasurements("limit")</i> to measure using the
 the <i>Analyze&gt;Set Measurements</i> dialog box are measured,
 including those that are unchecked.
 Use List.getValue() in an assignment statement to retrieve the values.
-See the <a href="https://imagej.net/ij/macros/DrawEllipse.txt">DrawEllipse</a>
+See the <a href="https://imagej.net/macros/DrawEllipse.txt">DrawEllipse</a>
 macro for an example.
-Use <a href="https://imagej.net/ij/developer/macro/functions.html#getMeasurementValue">getValue("Mean, Median, Feret, etc.")</a>
+Use <a href="https://imagej.net/developer/macro/functions.html#getMeasurementValue">getValue("Mean, Median, Feret, etc.")</a>
 to get a single measurement value (does not require List.setMeasurements.).
 <br>
 
@@ -1972,7 +1972,7 @@ Note that this function, as well as List.size, returns a string.
 <a name="log"></a>
 <b>log(n)</b><br>
 Returns the natural logarithm (base e) of <i>n</i>. Note that log10(n) = log(n)/log(10).
-See also: <a href="https://imagej.net/ij/developer/macro/functions.html#Math.log10">Math.log10</a>. 
+See also: <a href="https://imagej.net/developer/macro/functions.html#Math.log10">Math.log10</a>. 
 <p>
 
 
@@ -2076,7 +2076,7 @@ and 'width' is the line width.
 <b>makeSelection(type, xpoints, ypoints)</b><br>
 Creates a selection from a list of XY coordinates. The first argument should be
 "polygon", "freehand", "polyline", "freeline", "angle" or "point", or
-the numeric value returned by <a href="https://imagej.net/ij/developer/macro/functions.html#selectionType">selectionType</a>.
+the numeric value returned by <a href="https://imagej.net/developer/macro/functions.html#selectionType">selectionType</a>.
 The <i>xpoints</i> and <i>ypoints</i> arguments
 are numeric arrays that contain the X and Y coordinates.
 See the <a href="https://imagej.net/macros/MakeSelectionDemo.txt">MakeSelectionDemo</a>
@@ -2384,9 +2384,9 @@ corner of the bounding rectangle.
 <b>Overlay.drawString("text", x, y)</b><br>
 Draws text at the specified location and adds it to the overlay.
 The first character is drawn obove and to the right of (x,y).
-Use <a href="https://imagej.net/ij/developer/macro/functions.html#setFont">setFont()</a> to specify the font
-and <a href="https://imagej.net/ij/developer/macro/functions.html#setColor">setColor</a> to set specify the color
-(<a href="https://imagej.net/ij/macros/examples/OverlayDrawStringDemo.txt">example</a>).
+Use <a href="https://imagej.net/developer/macro/functions.html#setFont">setFont()</a> to specify the font
+and <a href="https://imagej.net/developer/macro/functions.html#setColor">setColor</a> to set specify the color
+(<a href="https://imagej.net/macros/examples/OverlayDrawStringDemo.txt">example</a>).
 <br>
 
 <b>Overlay.drawString("text", x, y, angle)</b><br>
@@ -2592,7 +2592,7 @@ dataset provided by <i>Plot.create</i> or <i>Plot.add</i>.
 <a name="Plot.add2"></a>
 <b>Plot.add(type, xValues, yValues, label)</b><br>
 Adds a curve or set of points to the plot and sets the dataset
-label used by <a href="https://imagej.net/ij/developer/macro/functions.html#Plot.showValuesWithLabels">Plot.showValuesWithLabels</a>.
+label used by <a href="https://imagej.net/developer/macro/functions.html#Plot.showValuesWithLabels">Plot.showValuesWithLabels</a>.
 Requires 1.52q.
 <br>
 
@@ -2782,7 +2782,7 @@ column headings. Must be preceded by <i>Plot.show</i>.
 <b>Plot.showValuesWithLabels()</b><br>
 Displays the plot values in the Results window using the
 dataset labels, for example the labels supplied by
-<a href="https://imagej.net/ij/developer/macro/functions.html#Plot.setLegend">Plot.setLegend</a>.
+<a href="https://imagej.net/developer/macro/functions.html#Plot.setLegend">Plot.setLegend</a>.
 Must be preceded by <i>Plot.show</i>.
 Requires 1.52q.
 <br>
@@ -3391,7 +3391,7 @@ Returns the screen width in pixels.
 <b>selectionContains(x, y)</b><br>
 Returns <i>true</i> if the point <i>x,y</i> is inside the current selection.
 Aborts the macro if there is no selection.
-See also: <a href="https://imagej.net/ij/developer/macro/functions.html#Roi.contains">Roi.contains</a>
+See also: <a href="https://imagej.net/developer/macro/functions.html#Roi.contains">Roi.contains</a>
 </p><p>
 
 <a name="selectionName"></a>
@@ -3587,7 +3587,7 @@ Specifies the line width (in pixels) used by drawLine(), lineTo(), drawRect() an
 <a name="setLocation"></a>
 <b>setLocation(x, y)</b><br>
 Moves the active window to a new location. Use
-<a href="https://imagej.net/ij/developer/macro/functions.html#Table.setLocationAndSize">Table.setLocationAndSize(x,y,width,height,title)</a>
+<a href="https://imagej.net/developer/macro/functions.html#Table.setLocationAndSize">Table.setLocationAndSize(x,y,width,height,title)</a>
  to set the location and size of a specified window.
  Use <i>call("ij.gui.ImageWindow.setNextLocation", x, y)</i>
  to set the location of the next opened window.
@@ -3603,7 +3603,7 @@ Moves and resizes the active image window. The new location of the top-left
 corner is specified by <i>x</i> and <i>y</i>, and the
 new size by <i>width</i> and <i>height</i>.
 See also: 
-<a href="https://imagej.net/ij/developer/macro/functions.html#Table.setLocationAndSize">Table.setLocationAndSize</a>.
+<a href="https://imagej.net/developer/macro/functions.html#Table.setLocationAndSize">Table.setLocationAndSize</a>.
 
 </p><p>
 
@@ -3696,7 +3696,7 @@ avoid  "Save Changes?" dialog boxes when closing images.
 <b>setOption("CopyHeaders", boolean)</b><br>
 Enables/disables the "Copy column headers" option in the
 <i>Edit&gt;Options&gt;Input/Output</i> dialog.
-See <a href="https://imagej.net/ij/developer/macro/functions.html#String.copyResults">String.copyResults</a>
+See <a href="https://imagej.net/developer/macro/functions.html#String.copyResults">String.copyResults</a>
 Requires v1.52p.
 <br>
 <a name="setOption5b"></a>
@@ -3776,7 +3776,7 @@ when "Min &amp; Max Gray Value" is enabled in the <i>Analyze&gt;Set Measurements
 <a name="setOption18"></a>
 <b>setOption("ShowRowNumbers", boolean)</b><br>
 Enables/disables display of Results table row numbers
-  (<a href="https://imagej.net/ij/macros/SineCosineTable.txt">example</a>). 
+  (<a href="https://imagej.net/macros/SineCosineTable.txt">example</a>). 
 <br>
 <a name="setOption19"></a>
 <b>setOption("ShowRowIndexes", boolean)</b><br>
@@ -3789,7 +3789,7 @@ Controls the "Antialiased text" option in the
  <br>
 <a name="setOption20a"></a> 
 <b>setOption("WaitForCompletion", boolean)</b><br>
-Set <i>false</i> and the next <a href="https://imagej.nih.gov/ij/developer/macro/functions.html#exec">exec()</a>
+Set <i>false</i> and the next <a href="https://imagej.net/developer/macro/functions.html#exec">exec()</a>
 call will return null and not wait for the command being
 executed to finish.
 Requires v1.52u.
@@ -3810,7 +3810,7 @@ Requires v1.52k.
 <b>setOption("CopyHeaders", boolean)</b><br>
 Enables/disables the "Copy column headers" option in the
 <i>Edit&gt;Options&gt;Input/Output</i> dialog.
-See <a href="https://imagej.net/ij/developer/macro/functions.html#String.copyResults">String.copyResults</a>
+See <a href="https://imagej.net/developer/macro/functions.html#String.copyResults">String.copyResults</a>
 Requires v1.52p.
 
 </blockquote>
@@ -3992,7 +3992,7 @@ The bar is erased if <i>currentIndex</i>&gt;<i>finalIndex</i> or
 Displays a message in the ImageJ status bar.
 If <i>message</i> starts with '!', subsequent
 process messages are suppressed
-(<a href="https://imagej.nih.gov/ij/macros/examples/NonVolatileShowStatus.txt">example</a>).
+(<a href="https://imagej.net/macros/examples/NonVolatileShowStatus.txt">example</a>).
 </p><p>
 
 <a name="showText"></a>
@@ -4030,7 +4030,7 @@ and delimiters at the start or end of the <i>string</i> are ignored unless the d
 is a single comma, a single semicolon or a regular expression.
 With ImageJ 1.49f or later, <i>delimiters</i> can be also a regular expression enclosed in
 parentheses, e.g. <i>delimiters</i>="(\n\n)" splits only at empty lines (two newline characters
-following each other). See also: <a href="https://imagej.nih.gov/ij/developer/macro/functions.html#String.join">String.join</a>. 
+following each other). See also: <a href="https://imagej.net/developer/macro/functions.html#String.join">String.join</a>. 
 </p><p>
 Note that split() may return empty strings when the second argument is
 ",", ";' or "\n". To avoid empty strings, use ",,", ";;" and "\n\n" as the second argument.
@@ -4225,7 +4225,7 @@ See also:
  <b>String Functions</b><br>
 These functions do string buffering and copy strings to and from
 the system clipboard. The
-<a href="https://imagej.net/ij/macros/CopyResultsToClipboard.txt">CopyResultsToClipboard</a>
+<a href="https://imagej.net/macros/CopyResultsToClipboard.txt">CopyResultsToClipboard</a>
 macro demonstrates their use. These string functions, where 's' is a string variable,
 are also available:
 s.<b>charAt</b>(i), s.<b>contains(s2)</b>, s.<b>endsWith(s2)</b>,
@@ -4279,7 +4279,7 @@ Returns the contents of the clipboard.
 <a name="String.join"></a>
 <b>String.join(array)</b> - 
 Creates a ", " delimited string from the elements of 'array'.
-See also: <a href="https://imagej.nih.gov/ij/developer/macro/functions.html#split">split</a>.
+See also: <a href="https://imagej.net/developer/macro/functions.html#split">split</a>.
 Requires 1.52s.
 <br>
 
@@ -4441,7 +4441,7 @@ Enable/disable display of row indexes.
 <br>
 <a name="Table.showArrays"></a>
 <b> Table.showArrays(title, array1, array2, ...)</b> - 
-Displays arrays in a table (same as <a href="https://imagej.net/ij/developer/macro/functions.html#Array.show">Array.show</a>).
+Displays arrays in a table (same as <a href="https://imagej.net/developer/macro/functions.html#Array.show">Array.show</a>).
 If <i>title</i> ends with "(indexes)", a 0-based Index column is shown.
 If it ends with "(row numbers)", the row number column is shown.
 <br>
@@ -4474,13 +4474,13 @@ Returns the tangent of an angle (in radians).
 <b>toBinary(number)</b><br>
 
 Returns a binary string representation of <i>number</i>.
-Use <a href="https://imagej.net/ij/developer/macro/functions.html#IJ.pad">IJ.pad</a> to add leading zeros.
+Use <a href="https://imagej.net/developer/macro/functions.html#IJ.pad">IJ.pad</a> to add leading zeros.
 </p><p>
 
 <a name="toHex"></a>
 <b>toHex(number)</b><br>
 Returns a hexadecimal string representation of <i>number</i>.
-Use <a href="https://imagej.net/ij/developer/macro/functions.html#IJ.pad">IJ.pad</a> to add leading zeros.
+Use <a href="https://imagej.net/developer/macro/functions.html#IJ.pad">IJ.pad</a> to add leading zeros.
 </p><p>
 
 <a name="toLowerCase"></a>
@@ -4571,17 +4571,17 @@ Call this function to update the "Results" window after the results table has be
 modified by calls to the setResult() function.
 </p><p>
 
- <b> V  </b><a name="V"></a><a href="https://imagej.net/ij/developer/macro/functions.html#Top">[&nbsp;Top&nbsp;]</a></p><p>
+ <b> V  </b><a name="V"></a><a href="https://imagej.net/developer/macro/functions.html#Top">[&nbsp;Top&nbsp;]</a></p><p>
 <a name="value"></a>
 <b>value(x,y)</b><br>
 Returns the value of the pixel at <i>(x,y)</i>. For 8 and 16 bit images,
 it is the calibrated value. For RGB images, it is the
-intensity value. Use  <a href="https://imagej.net/ij/developer/macro/functions.html#getPixel">getPixel(x,y)</a> to get
+intensity value. Use  <a href="https://imagej.net/developer/macro/functions.html#getPixel">getPixel(x,y)</a> to get
 raw pixel values. Requires 1.52p.
 </p><p>
 
 <a name="X"></a><a name="Y"></a><a name="Z"></a>
- <b> W  </b><a name="W"></a><a href="https://imagej.net/ij/developer/macro/functions.html#Top">[&nbsp;Top&nbsp;]</a></p><p>
+ <b> W  </b><a name="W"></a><a href="https://imagej.net/developer/macro/functions.html#Top">[&nbsp;Top&nbsp;]</a></p><p>
 <a name="wait"></a>
 <b>wait(n)</b><br>
 Delays (sleeps) for <i>n</i> milliseconds.
