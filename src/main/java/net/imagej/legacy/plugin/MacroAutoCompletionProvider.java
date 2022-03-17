@@ -198,12 +198,16 @@ class MacroAutoCompletionProvider extends DefaultCompletionProvider implements
 			name.compareTo("IJ") != 0 && //
 			name.compareTo("Stack") != 0 && //
 			name.compareTo("Array") != 0 && //
+			name.compareTo("Color") != 0 && //
+			name.compareTo("Image") != 0 && //
 			name.compareTo("file") != 0 && //
 			name.compareTo("Fit") != 0 && //
 			name.compareTo("List") != 0 && //
 			name.compareTo("Overlay") != 0 && //
 			name.compareTo("Plot") != 0 && //
+			name.compareTo("Property") != 0 && //
 			name.compareTo("Roi") != 0 && //
+			name.compareTo("RoiManager2") != 0 && //
 			name.compareTo("String") != 0 && //
 			name.compareTo("Table") != 0 && //
 			name.compareTo("Ext") != 0 && //
@@ -234,8 +238,8 @@ class MacroAutoCompletionProvider extends DefaultCompletionProvider implements
 		final String name, String description)
 	{
 		if (!headline.startsWith("run(\"")) {
-			final String link = //
-					"https://imagej.net/developer/macro/functions.html#" + name;
+			final String link = // strips extra numbering suffix for duplicate names pointing to a common anchor label (e.g. "duplicate_4b")
+					"https://imagej.net/developer/macro/functions.html#" + name.replaceAll("_\\d+[a-z]?$", "");
 
 			description = //
 					"<a href=\"" + link + "\">" + headline + "</a><br>" + description;
