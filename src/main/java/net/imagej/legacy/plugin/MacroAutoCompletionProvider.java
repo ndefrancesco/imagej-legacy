@@ -238,7 +238,7 @@ class MacroAutoCompletionProvider extends DefaultCompletionProvider implements
 					"https://imagej.net/developer/macro/functions.html#" + name;
 
 			description = //
-					"<a href=\"" + link + "\">" + headline + "</a><br>" + description;
+					"<a href=\"" + link + "\"><b>" + headline + "</b></a><br>" + description;
 		}
 
 		if (headline.trim().endsWith("-")) {
