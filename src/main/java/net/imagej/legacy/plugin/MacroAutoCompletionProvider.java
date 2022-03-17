@@ -226,7 +226,7 @@ class MacroAutoCompletionProvider extends DefaultCompletionProvider implements
 				.replace("\n;", "\n")
 				.replace("{;", "{")
 				.replace("};", "}")
-				.replace(") -;", ");");
+				.replace(" -;", ";");
 	}
 
 	private BasicCompletion makeListEntry(
