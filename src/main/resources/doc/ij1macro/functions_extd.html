@@ -10,6 +10,14 @@ Exit a while() or for() loop.
 <b>continue</b><br>
 Jump back to the beginning of a while() or for() loop.
 
+<a name="return"></a>
+<b>return <i>value</i></b><br>
+Return a value from a function:<br><br>
+function sum(a, b) {<br>
+&emsp;c = a + b;<br>
+&emsp;return c;<br>
+}<br>
+
 <a name="else"></a>
 <b>else {</b><br>
 All commands inside an else block are executed if the expression in the earlier if block is false.
@@ -23,11 +31,11 @@ A for loop which opens all files ending with ".tif" in a folder.
 A for loop which loops over slices in a stack.
 
 <a name="forroisintheroimanager"></a>
-<b>n = roiManager('count');<br>for (i = 0; i < n; i++) {<br>    roiManager('select', i);<br>    // process roi here<br>}</b>
+<b>n = roiManager("count");<br>for (i = 0; i < n; i++) {<br>    roiManager("select", i);<br>    // process roi here<br>}</b>
 A for loop which loops over ROIs in the ROI Manager.
 
 <a name="forresultsintheresultstable"></a>
-<b>for (i = 0; i < nResults(); i++) {<br>    v = getResult('Area', i);<br>    setResult('myColumn', i, v);<br>}<br>updateResults();<br></b>
+<b>for (i = 0; i < nResults(); i++) {<br>    v = getResult("Area", i);<br>    setResult("myColumn", i, v);<br>}<br>updateResults();<br></b>
 A for loop which loops over results in the Results Table.
 
 <a name="for"></a>
@@ -35,7 +43,7 @@ A for loop which loops over results in the Results Table.
 All commands inside a for loop block are repeatedly executed.
 
 <a name="function"></a>
-<b>function doSomething() { <br>// function description</b><br>
+<b>function doSomething() {<br>// function description<br><br>}</b><br>
 Defines a list of commands as function which can be called.
 
 <a name="if"></a>
@@ -59,7 +67,7 @@ Update the recent line of the log window by replace its content by [text].
 Update the [n+1]th line of the log window by replace its content by [text].
 
 <a name="var"></a>
-<b>var</b><br>
+<b>var <i>variable</i></b><br>
 The <pre>var</pre> statement allows defining global variables which are available from different macros. See <a href="https://imagej.net/ij/developer/macro/macros.html#sets">documentation</a> for more details.
 
 <a name="while"></a>

@@ -48,7 +48,7 @@ macro for examples.
 </p><blockquote>
 
 <a name="Array.concat"></a>
-<b>Array.concat(array1,array2)</b> - 
+<b>Array.concat(array1, array2)</b> - 
 Returns a new array created by joining two or more arrays or values
 (<a href="https://imagej.net/macros/examples/ArrayConcatExamples.txt">examples</a>).
 <br>
@@ -82,7 +82,7 @@ Assigns the specified numeric value to each element of <i>array</i>.
 <b>Array.filter(array, filter)</b> 
 Returns an array containing the elements of 'array' that contain 'filter',
 where 'array' is an array of strings.
-Enclose the filter in parans to do regular expression matching.
+Enclose the filter in parenthesis (e.g. "(data_[\d]{4})") to do regular expression matching.
 Requires 1.53f.
 <br>
 
@@ -131,7 +131,7 @@ Returns, as an array, the rank position indexes of <i>array</i>, starting with t
 <br>
 
 <a name="Array.resample"></a>
-<b>Array.resample(array,len)</b> - 
+<b>Array.resample(array, len)</b> - 
 Returns an array which is linearly resampled to a different length.
 <br>
 
@@ -157,7 +157,7 @@ If <i>title</i> ends with "(row numbers)", the row number column is shown.
 <br>
 
 <a name="Array.slice"></a>
-<b>Array.slice(array,start,end)</b> - 
+<b>Array.slice(array, start, end)</b> - 
 Extracts a part of an array and returns it.
 (<a href="https://imagej.net/macros/examples/ArraySliceExamples.txt">examples</a>).
 <br>
@@ -230,8 +230,8 @@ is called or when the macro terminates.
 Emits an audible beep.
 </p><p>
 
-<a name="butDepth"></a>
-<b>bitDepth() </b><br> 
+<a name="bitDepth"></a>
+<b>bitDepth()</b><br> 
 Returns the bit depth of the active image: 8, 16, 24 (RGB) or 32 (float).
 
 </p><p>
@@ -560,7 +560,7 @@ Default insets:<br>
 &nbsp;&nbsp;&nbsp;addChoice: 5,0,5 (first field) or 0,0,5<br>
 </small>
 <a name="Dialog.setLocation"></a>
-<b>Dialog.setLocation(x,y)</b> -
+<b>Dialog.setLocation(x, y)</b> -
 Sets the screen location where this dialog will be displayed.
 <br>
 <a name="Dialog.show"></a>
@@ -1112,7 +1112,7 @@ See also:
 </p><p>
 
 <a name="fromCharCode"></a>
-<b>fromCharCode(value1,...,valueN)</b><br>
+<b>fromCharCode(value1, ..., valueN)</b><br>
 This function takes one or more Unicode values and returns a string. 
 </p><p>
 
@@ -1891,7 +1891,7 @@ Changes the title of the "Results" table to the string <i>name</i>.
 <br>
 
 <a name="IJ.renameResults_2"></a>
-<b>IJ.renameResults(oldName,newName)</b> - 
+<b>IJ.renameResults(oldName, newName)</b> - 
 Changes the title of a results table from <i>oldName</i> to <i>newName</i>.
 <br>
 
@@ -1926,7 +1926,7 @@ image if there is no selection, to the internal clipboard.
 <br>
 
 <a name="Image.paste"></a>
-<b>Image.paste(x,y)</b><br>
+<b>Image.paste(x, y)</b><br>
 Inserts the contents of the internal clipboard at the
 specified location in the active image.
 <br>
@@ -2746,14 +2746,14 @@ Moves the specified selection to the specified location.
 <br>
 
 <a name="Overlay.indexAt"></a>
-<b>Overlay.indexAt(x,y)</b><br>
+<b>Overlay.indexAt(x, y)</b><br>
 Returns the index of the last selection in the overlay containing the point (x,y),
 or an empty string if no selection contains the point.
 Requires 1.53b.
 <br>
 
 <a name="Overlay.getBounds"></a>
-<b>Overlay.getBounds(index,x,y,width,height)</b><br>
+<b>Overlay.getBounds(index, x, y, width, height)</b><br>
 Returns the bounding rectangle of the selection in the overlay specified by 'index'.
 Requires 1.53b.
 <br>
@@ -3648,6 +3648,7 @@ Deletes the selection, if any, from the active image.
 
 </blockquote>
 
+<a name="RoiManager"></a>
 <b>ROI Manager Functions</b><br>
 These function run ROI Manager commands.
 The ROI Manager is opened if it is not already open.
@@ -4539,7 +4540,7 @@ text (<a href="https://imagej.net/macros/HtmlDialogDemo.txt">example</a>).
 </p><p>
 
 <a name="showMessageWithCancel"></a>
-<b>showMessageWithCancel(["title",]"message")</b><br>
+<b>showMessageWithCancel(["title", ]"message")</b><br>
 Displays "message" in a dialog box with "OK" and "Cancel" buttons.
 "Title" (optional) is the dialog box title. The macro exits if 
 the user clicks "Cancel" button.
@@ -4807,8 +4808,8 @@ macro demonstrates their use. These string functions, where 's' is a string vari
 are also available in ImageJ 1.52t and newer:
 s.<b>charAt</b>(i), s.<b>contains(s2)</b>, s.<b>endsWith(s2)</b>,
 s.<b>indexOf(s2)</b>, s.<b>lastIndexOf(s2)</b>,
-s.<b>length</b>, s.<b>matches(s2)</b>, s.<b>replace(s1,s2)</b>, 
-s.<b>startsWith(s2)</b>, s.<b>substring(i1,i2)</b>, s.<b>substring(i)</b>,
+s.<b>length</b>, s.<b>matches(s2)</b>, s.<b>replace(s1, s2)</b>, 
+s.<b>startsWith(s2)</b>, s.<b>substring(i1, i2)</b>, s.<b>substring(i)</b>,
 s.<b>toLowerCase</b>, s.<b>toUpperCase</b>, s.<b>trim</b>.
 </p><blockquote>
 
