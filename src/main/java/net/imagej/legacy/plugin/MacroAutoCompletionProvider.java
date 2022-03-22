@@ -118,7 +118,12 @@ class MacroAutoCompletionProvider extends DefaultCompletionProvider implements
 				else {
 					if (headline.length() == 0) {
 						if (line.startsWith("<b>"))
-							headline = htmlToText(line.split("<b>")[1].split("</b>")[0] + ";"); // headlines are always in bold
+							headline = htmlToText(line.split("<b>")[1].split("</b>")[0]); // headlines are always in bold
+							if(!headline.startsWith("#@")
+									&& !headline.endsWith("\n")
+									&& !headline.endsWith("{")
+									&& !headline.endsWith("}"))
+								headline += ";";
 					}
 					else {
 						description = description + line + "\n";
@@ -226,12 +231,7 @@ class MacroAutoCompletionProvider extends DefaultCompletionProvider implements
 			.replace("</b>", "") //
 			.replace("<i>", "") //
 			.replace("</i>", "") //
-			.replace("<br>", "\n")
-			//.replace(")\n;", ");")
-				.replace("\n;", "\n")
-				.replace("{;", "{")
-				.replace("};", "}");
-				//.replace(" -;", ";");
+			.replace("<br>", "\n");
 	}
 
 	private BasicCompletion makeListEntry(
