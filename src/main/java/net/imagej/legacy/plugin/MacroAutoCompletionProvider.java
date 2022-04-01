@@ -74,6 +74,7 @@ class MacroAutoCompletionProvider extends DefaultCompletionProvider implements
 	private MacroAutoCompletionProvider() {
 		parseFunctionsHtmlDoc("/doc/ij1macro/functions.html");
 		parseFunctionsHtmlDoc("/doc/ij1macro/functions_extd.html");
+		setAutoActivationRules(true, "."); // when using auto-activation, make it so that it occurs after any letter or '.'
 	}
 
 	public static synchronized MacroAutoCompletionProvider getInstance() {

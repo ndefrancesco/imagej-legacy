@@ -76,8 +76,6 @@ public class MacroLanguageSupportPlugin extends AbstractLanguageSupport
 	@Override
 	public void install(final RSyntaxTextArea rSyntaxTextArea) {
 		final AutoCompletion ac = createAutoCompletion(getCompletionProvider());
-		ac.setAutoActivationDelay(100);
-		ac.setAutoActivationEnabled(true);
 		ac.setShowDescWindow(true);
 		ac.install(rSyntaxTextArea);
 		installImpl(rSyntaxTextArea, ac);
@@ -163,29 +161,7 @@ public class MacroLanguageSupportPlugin extends AbstractLanguageSupport
 
 		@Override
 		public void keyReleased(final KeyEvent e) {
-			SwingUtilities.invokeLater(() -> {
-				if (disabledChars.contains(e.getKeyChar())) {
-					if (!e.isControlDown()) {
-						// the pulldown should not be hidden if CTRL+SPACE are pressed
-						ac.hideChildWindows();
-					}
-				} else if ((e.isControlDown() && e.getKeyCode() != KeyEvent.VK_SPACE) || // control pressed but not space
-					e.getKeyCode() == KeyEvent.VK_LEFT || // arrow keys left/right were pressed
-					e.getKeyCode() == KeyEvent.VK_RIGHT
-				) {
-					ac.hideChildWindows();
-				} else if (e.getKeyCode() >= 65 // a
-				&& e.getKeyCode() <= 90 // z
-				) {
-					if (MacroAutoCompletionProvider.getInstance().getAlreadyEnteredText(
-						textArea).length() >= MINIMUM_WORD_LENGTH_TO_OPEN_PULLDOWN &&
-						MacroAutoCompletionProvider.getInstance()
-							.getCompletions(textArea).size() > 0)
-					{
-						ac.doCompletion();
-					}
-				}
-			});
+
 		}
 	}
 
