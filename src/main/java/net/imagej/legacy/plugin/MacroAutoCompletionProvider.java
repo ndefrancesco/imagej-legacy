@@ -117,7 +117,8 @@ class MacroAutoCompletionProvider extends DefaultCompletionProvider implements
 				}
 				else {
 					if (headline.length() == 0) {
-						headline = htmlToText(line + ";");
+						if (line.startsWith("<b>"))
+							headline = htmlToText(line.split("<b>")[1].split("</b>")[0] + ";"); // headlines are always in bold
 					}
 					else {
 						description = description + line + "\n";
