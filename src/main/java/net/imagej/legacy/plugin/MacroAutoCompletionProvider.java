@@ -35,6 +35,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -204,12 +206,16 @@ class MacroAutoCompletionProvider extends DefaultCompletionProvider implements
 			name.compareTo("IJ") != 0 && //
 			name.compareTo("Stack") != 0 && //
 			name.compareTo("Array") != 0 && //
+			name.compareTo("Color") != 0 && //
+			name.compareTo("Image") != 0 && //
 			name.compareTo("file") != 0 && //
 			name.compareTo("Fit") != 0 && //
 			name.compareTo("List") != 0 && //
 			name.compareTo("Overlay") != 0 && //
 			name.compareTo("Plot") != 0 && //
+			name.compareTo("Property") != 0 && //
 			name.compareTo("Roi") != 0 && //
+			name.compareTo("RoiManager2") != 0 && //
 			name.compareTo("String") != 0 && //
 			name.compareTo("Table") != 0 && //
 			name.compareTo("Ext") != 0 && //
@@ -235,11 +241,22 @@ class MacroAutoCompletionProvider extends DefaultCompletionProvider implements
 		final String name, String description)
 	{
 		if (!headline.startsWith("run(\"")) {
-			final String link = //
-					"https://imagej.net/developer/macro/functions.html#" + name;
-
+			final String functionsDocURL = "https://imagej.net/ij/developer/macro/functions.html";
+			final String link = functionsDocURL + "#" + name;
+			final String[] descParts = description.split("<a href=\"");
+			URI rootURI;
+			try {
+				rootURI = new URI(functionsDocURL);
+				for (int i = 1; i < descParts.length; i++) {
+					String relativeURL = descParts[i].split("\"", 2)[0];
+					descParts[i] = rootURI.resolve(relativeURL).toString() + "\"" + descParts[i].split("\"", 2)[1];
+				}
+			} catch (URISyntaxException e) {
+				e.printStackTrace();
+			}
+			
 			description = //
-					"<a href=\"" + link + "\"><b>" + headline + "</b></a><br>" + description;
+					"<a href=\"" + link + "\"><b>" + headline + "</b></a><br>" + String.join("<a href=\"", descParts);
 		}
 
 		if (headline.trim().endsWith("-")) {
