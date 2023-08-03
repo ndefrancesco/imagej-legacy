@@ -74,7 +74,10 @@ class MacroAutoCompletionProvider extends DefaultCompletionProvider implements
 	private final int maximumSearchResults = 100;
 
 	private MacroAutoCompletionProvider() {
-		parseFunctionsHtmlDoc("/doc/ij1macro/functions.html");
+		if (!parseFunctionsHtmlDoc("/functions.html")) {
+			parseFunctionsHtmlDoc("/doc/ij1macro/functions.html");
+			System.out.println("Fallback to static copy for macro autocompletion");
+		}
 		parseFunctionsHtmlDoc("/doc/ij1macro/functions_extd.html");
 	}
 
