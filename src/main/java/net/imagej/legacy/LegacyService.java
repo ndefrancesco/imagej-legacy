@@ -2,7 +2,7 @@
  * #%L
  * ImageJ2 software for multidimensional image processing and analysis.
  * %%
- * Copyright (C) 2009 - 2023 ImageJ2 developers.
+ * Copyright (C) 2009 - 2024 ImageJ2 developers.
  * %%
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -457,7 +457,7 @@ public final class LegacyService extends AbstractService implements
 				final ClassLoader loader = Context.getClassLoader();
 				ij1Helper = new IJ1Helper(this);
 				LegacyInjector.installHooks(loader, //
-					new DefaultLegacyHooks(this, ij1Helper));
+					new DefaultLegacyHooks(this));
 				instance = this;
 
 				// Initialize ImageJ 1.x, if needed.

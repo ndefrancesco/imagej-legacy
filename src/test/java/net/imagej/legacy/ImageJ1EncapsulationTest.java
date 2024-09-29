@@ -2,7 +2,7 @@
  * #%L
  * ImageJ2 software for multidimensional image processing and analysis.
  * %%
- * Copyright (C) 2009 - 2023 ImageJ2 developers.
+ * Copyright (C) 2009 - 2024 ImageJ2 developers.
  * %%
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -88,12 +88,15 @@ public class ImageJ1EncapsulationTest {
 					className.startsWith(net.imagej.legacy.Macros.class.getName()) ||
 					className.startsWith(net.imagej.legacy.OptionsSynchronizer.class.getName()) ||
 					className.startsWith(net.imagej.legacy.command.LegacyCommand.class.getName()) ||
+					className.startsWith(net.imagej.legacy.convert.AbstractImagePlusLegacyConverter.class.getName()) ||
 					className.startsWith(net.imagej.legacy.convert.DatasetToImagePlusConverter.class.getName()) ||
 					className.startsWith(net.imagej.legacy.convert.DoubleToImagePlusConverter.class.getName()) ||
 					className.startsWith(net.imagej.legacy.convert.ImageDisplayToImagePlusConverter.class.getName()) ||
 					className.startsWith(net.imagej.legacy.convert.ImagePlusToDatasetConverter.class.getName()) ||
 					className.startsWith(net.imagej.legacy.convert.ImagePlusToImageDisplayConverter.class.getName()) ||
+					className.startsWith(net.imagej.legacy.convert.ImagePlusToImgPlusConverter.class.getName()) ||
 					className.startsWith(net.imagej.legacy.convert.ImageTitleToImagePlusConverter.class.getName()) ||
+					className.startsWith(net.imagej.legacy.convert.ImgPlusToImagePlusConverter.class.getName()) ||
 					className.startsWith(net.imagej.legacy.convert.OverlayToROITreeConverter.class.getName()) ||
 					className.startsWith(net.imagej.legacy.convert.ResultsTableColumnWrapper.class.getName()) ||
 					className.startsWith(net.imagej.legacy.convert.ResultsTableToGenericTableConverter.class.getName()) ||

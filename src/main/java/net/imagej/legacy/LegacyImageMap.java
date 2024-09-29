@@ -2,7 +2,7 @@
  * #%L
  * ImageJ2 software for multidimensional image processing and analysis.
  * %%
- * Copyright (C) 2009 - 2023 ImageJ2 developers.
+ * Copyright (C) 2009 - 2024 ImageJ2 developers.
  * %%
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -425,7 +425,7 @@ public class LegacyImageMap extends AbstractContextual {
 	/**
 	 * Creates a mapping between a given {@link ImageDisplay} and
 	 * {@link ImagePlus}. If {@code createLegacyMappings} is true, the mappings
-	 * will be added to the leagcy mode maps.
+	 * will be added to the legacy mode maps.
 	 */
 	private void addMapping(final ImageDisplay display, final ImagePlus imp,
 		final boolean createLegacyMappings)

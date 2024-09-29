@@ -2,7 +2,7 @@
  * #%L
  * ImageJ2 software for multidimensional image processing and analysis.
  * %%
- * Copyright (C) 2009 - 2023 ImageJ2 developers.
+ * Copyright (C) 2009 - 2024 ImageJ2 developers.
  * %%
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -31,16 +31,12 @@ package net.imagej.legacy.convert;
 
 import ij.ImagePlus;
 
-import java.util.Collection;
-
 import net.imagej.Dataset;
 import net.imagej.display.ImageDisplay;
 import net.imagej.display.ImageDisplayService;
-import net.imagej.legacy.IJ1Helper;
 
 import org.scijava.Priority;
 import org.scijava.convert.Converter;
-import org.scijava.object.ObjectService;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
 
@@ -57,14 +53,11 @@ import org.scijava.plugin.Plugin;
  */
 @Plugin(type = Converter.class, priority = Priority.LOW)
 public class ImagePlusToDatasetConverter extends
-	AbstractLegacyConverter<ImagePlus, Dataset>
+	AbstractImagePlusLegacyConverter<Dataset>
 {
 
 	@Parameter(required = false)
 	private ImageDisplayService imageDisplayService;
-
-	@Parameter(required = false)
-	private ObjectService objectService;
 
 	// -- Converter methods --
 
@@ -81,25 +74,6 @@ public class ImagePlusToDatasetConverter extends
 
 		final Dataset dataset = imageDisplayService.getActiveDataset(display);
 		return (T) dataset;
-	}
-
-	@Override
-	public void populateInputCandidates(final Collection<Object> objects) {
-		if (!legacyEnabled()) return;
-
-		final IJ1Helper ij1Helper = legacyService.getIJ1Helper();
-
-		final int[] imageIDs = ij1Helper.getIDList();
-		if (imageIDs == null) return; // no image IDs
-
-		// Add any ImagePluses in the IJ1 WindowManager that are not already
-		// converted
-		for (final int id : imageIDs) {
-			final ImagePlus imgPlus = ij1Helper.getImage(id);
-			if (legacyService.getImageMap().lookupDisplay(imgPlus) == null) {
-				objects.add(imgPlus);
-			}
-		}
 	}
 
 	@Override

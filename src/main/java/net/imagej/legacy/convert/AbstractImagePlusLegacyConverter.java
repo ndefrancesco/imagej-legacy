@@ -27,50 +27,39 @@
  * #L%
  */
 
-package net.imagej.legacy.convert.roi;
+package net.imagej.legacy.convert;
 
-import ij.gui.Arrow;
-import ij.gui.ImageRoi;
-import ij.gui.Roi;
-import ij.gui.TextRoi;
+import java.util.Collection;
 
-import net.imglib2.roi.MaskInterval;
-
-import org.scijava.Priority;
 import org.scijava.convert.Converter;
-import org.scijava.plugin.Plugin;
+
+import ij.ImagePlus;
+import net.imagej.legacy.IJ1Helper;
 
 /**
- * Converts an ImageJ 1.x {@link Roi} to an Imglib2 {@link MaskInterval}. The
- * only ImageJ 1.x Rois not supported by this converter are: {@link TextRoi},
- * {@link Arrow}, and {@link ImageRoi}.
- *
- * @author Alison Walter
+ * Base {@link Converter} class for converting {@link ImagePlus} to other
+ * classes.
  */
-@Plugin(type = Converter.class, priority = Priority.VERY_LOW)
-public class RoiToMaskIntervalConverter extends
-	AbstractRoiToMaskPredicateConverter<Roi, MaskInterval>
+public abstract class AbstractImagePlusLegacyConverter<O> extends
+	AbstractLegacyConverter<ImagePlus, O>
 {
 
 	@Override
-	public Class<MaskInterval> getOutputType() {
-		return MaskInterval.class;
-	}
+	public void populateInputCandidates(final Collection<Object> objects) {
+		if (!legacyEnabled()) return;
 
-	@Override
-	public Class<Roi> getInputType() {
-		return Roi.class;
-	}
+		final IJ1Helper ij1Helper = legacyService.getIJ1Helper();
 
-	@Override
-	public MaskInterval convert(final Roi src) {
-		return new DefaultRoiWrapper<>(src);
-	}
+		final int[] imageIDs = ij1Helper.getIDList();
+		if (imageIDs == null) return; // no image IDs
 
-	@Override
-	public boolean supportedType(final Roi src) {
-		return !(src instanceof TextRoi) && !(src instanceof Arrow) &&
-			!(src instanceof ImageRoi);
+		// Add any ImagePluses in the IJ1 WindowManager that are not already
+		// converted
+		for (final int id : imageIDs) {
+			final ImagePlus imgPlus = ij1Helper.getImage(id);
+			if (legacyService.getImageMap().lookupDisplay(imgPlus) == null) {
+				objects.add(imgPlus);
+			}
+		}
 	}
-
 }

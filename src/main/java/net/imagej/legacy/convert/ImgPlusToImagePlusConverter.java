@@ -27,50 +27,70 @@
  * #L%
  */
 
-package net.imagej.legacy.convert.roi;
+package net.imagej.legacy.convert;
 
-import ij.gui.Arrow;
-import ij.gui.ImageRoi;
-import ij.gui.Roi;
-import ij.gui.TextRoi;
+import ij.ImagePlus;
 
-import net.imglib2.roi.MaskInterval;
+import java.util.Collection;
+
+import net.imagej.Dataset;
+import net.imagej.DatasetService;
+import net.imagej.ImgPlus;
 
 import org.scijava.Priority;
 import org.scijava.convert.Converter;
+import org.scijava.object.ObjectService;
+import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
 
 /**
- * Converts an ImageJ 1.x {@link Roi} to an Imglib2 {@link MaskInterval}. The
- * only ImageJ 1.x Rois not supported by this converter are: {@link TextRoi},
- * {@link Arrow}, and {@link ImageRoi}.
+ * {@link Converter} implementation for converting {@link Dataset} to a
+ * {@link ImagePlus}.
+ * <p>
+ * NB: should be LOWER priority than any default {@code Converter}s to avoid
+ * unintentionally grabbing undesired conversions (e.g. involving nulls).
+ * </p>
  *
- * @author Alison Walter
+ * @author Mark Hiner
+ * @author Curtis Rueden
  */
-@Plugin(type = Converter.class, priority = Priority.VERY_LOW)
-public class RoiToMaskIntervalConverter extends
-	AbstractRoiToMaskPredicateConverter<Roi, MaskInterval>
+@Plugin(type = Converter.class, priority = Priority.LOW)
+public class ImgPlusToImagePlusConverter extends
+	AbstractLegacyConverter<ImgPlus, ImagePlus>
 {
 
+	@Parameter(required = false)
+	private DatasetService datasetService;
+
+	@Parameter(required = false)
+	private ObjectService objectService;
+
+	// -- Converter methods --
+
 	@Override
-	public Class<MaskInterval> getOutputType() {
-		return MaskInterval.class;
+	public <T> T convert(final Object src, final Class<T> dest) {
+		if (!legacyEnabled()) throw new UnsupportedOperationException();
+		final ImgPlus d = (ImgPlus) src;
+		final Dataset ds = datasetService.create(d);
+		final Object imp = legacyService.getImageMap().registerDataset(ds);
+		@SuppressWarnings("unchecked")
+		final T typedImp = (T) imp;
+		return typedImp;
 	}
 
 	@Override
-	public Class<Roi> getInputType() {
-		return Roi.class;
+	public void populateInputCandidates(final Collection<Object> objects) {
+		if (objectService == null) return;
+		objects.addAll(objectService.getObjects(ImgPlus.class));
 	}
 
 	@Override
-	public MaskInterval convert(final Roi src) {
-		return new DefaultRoiWrapper<>(src);
+	public Class<ImagePlus> getOutputType() {
+		return ImagePlus.class;
 	}
 
 	@Override
-	public boolean supportedType(final Roi src) {
-		return !(src instanceof TextRoi) && !(src instanceof Arrow) &&
-			!(src instanceof ImageRoi);
+	public Class<ImgPlus> getInputType() {
+		return ImgPlus.class;
 	}
-
 }

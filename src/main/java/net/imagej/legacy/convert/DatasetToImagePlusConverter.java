@@ -2,7 +2,7 @@
  * #%L
  * ImageJ2 software for multidimensional image processing and analysis.
  * %%
- * Copyright (C) 2009 - 2023 ImageJ2 developers.
+ * Copyright (C) 2009 - 2024 ImageJ2 developers.
  * %%
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -34,6 +34,8 @@ import ij.ImagePlus;
 import java.util.Collection;
 
 import net.imagej.Dataset;
+import net.imagej.display.ImageDisplay;
+import net.imagej.legacy.LegacyImageMap;
 
 import org.scijava.Priority;
 import org.scijava.convert.Converter;
@@ -66,7 +68,19 @@ public class DatasetToImagePlusConverter extends
 	public <T> T convert(final Object src, final Class<T> dest) {
 		if (!legacyEnabled()) throw new UnsupportedOperationException();
 		final Dataset d = (Dataset) src;
-		final Object imp = legacyService.getImageMap().registerDataset(d);
+		LegacyImageMap imageMap = legacyService.getImageMap();
+		Object imp = null;
+		// First see if we can find a display already showing our Dataset
+		for (ImageDisplay display : imageMap.getImageDisplays()) {
+			if (display.isDisplaying(d)) {
+				imp = imageMap.lookupImagePlus(display);
+				break;
+			}
+		}
+		if (imp == null) {
+			// No existing display so register the dataset
+			imp = imageMap.registerDataset(d);
+		}
 		@SuppressWarnings("unchecked")
 		final T typedImp = (T) imp;
 		return typedImp;
@@ -75,8 +89,7 @@ public class DatasetToImagePlusConverter extends
 	@Override
 	public void populateInputCandidates(final Collection<Object> objects) {
 		if (objectService == null) return;
-		populateInputCandidateHelper(objects, objectService.getObjects(
-			Dataset.class));
+		objects.addAll(objectService.getObjects(Dataset.class));
 	}
 
 	@Override
